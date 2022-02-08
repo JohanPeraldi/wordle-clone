@@ -31,6 +31,10 @@ const keys = [
   "⇤\n",
 ];
 
+const word = "OVENS";
+let currentRow = 0;
+let currentTile = 0;
+
 const rows = [
   ["", "", "", "", ""],
   ["", "", "", "", ""],
@@ -52,14 +56,32 @@ rows.forEach((row, rowIndex) => {
   tileDisplay.append(rowElement);
 });
 
-const handleClick = () => {
-  console.log("clicked");
-};
-
 keys.forEach((key) => {
   const buttonElement = document.createElement("button");
   buttonElement.textContent = key;
   buttonElement.setAttribute("id", key);
-  buttonElement.addEventListener("click", handleClick);
+  buttonElement.addEventListener("click", () => handleClick(key));
   keyboard.append(buttonElement);
 });
+
+const handleClick = (letter) => {
+  console.log("clicked", letter);
+  if (letter === "ENTER") {
+    console.log("Check if word is correct");
+  } else if (letter === "⇤\n") {
+    console.log("Delete letter");
+  } else {
+    if (currentTile < 5 && currentRow < 6) {
+      addLetter(letter);
+    }
+  }
+};
+
+const addLetter = (letter) => {
+  const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
+  tile.textContent = letter;
+  rows[currentRow][currentTile] = letter;
+  tile.setAttribute("data", letter);
+  currentTile++;
+  console.log(rows);
+};
