@@ -35,6 +35,7 @@ const keys = [
 const wordle = "OVENS";
 let currentRow = 0;
 let currentTile = 0;
+let isGameOver = false;
 
 const rows = [
   ["", "", "", "", ""],
@@ -68,7 +69,7 @@ keys.forEach((key) => {
 const handleClick = (letter) => {
   console.log("clicked", letter);
   if (letter === "ENTER") {
-    if (currentTile === 5) {
+    if (currentTile > 4) {
       checkUserInput();
     }
   } else if (letter === "⇤\n") {
@@ -107,6 +108,16 @@ const checkUserInput = () => {
   console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
   if (userInput === wordle) {
     showMessage("Well done!");
+    isGameOver = true;
+  } else {
+    if (currentRow >= 5) {
+      isGameOver = true;
+      showMessage("Game over");
+    }
+    if (currentRow < 5) {
+      currentRow++;
+      currentTile = 0;
+    }
   }
 };
 
@@ -114,4 +125,5 @@ const showMessage = (message) => {
   const messageElement = document.createElement("p");
   messageElement.textContent = message;
   messageDisplay.append(messageElement);
+  setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
 };
