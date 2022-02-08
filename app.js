@@ -31,7 +31,7 @@ const keys = [
   "⇤\n",
 ];
 
-const word = "OVENS";
+const wordle = "OVENS";
 let currentRow = 0;
 let currentTile = 0;
 
@@ -67,7 +67,9 @@ keys.forEach((key) => {
 const handleClick = (letter) => {
   console.log("clicked", letter);
   if (letter === "ENTER") {
-    console.log("Check if word is correct");
+    if (currentTile === 5) {
+      checkUserInput();
+    }
   } else if (letter === "⇤\n") {
     if (currentTile > 0) {
       deleteLetter();
@@ -80,6 +82,7 @@ const handleClick = (letter) => {
   console.log(rows);
 };
 
+// Clicking a letter button
 const addLetter = (letter) => {
   const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
   tile.textContent = letter;
@@ -88,10 +91,17 @@ const addLetter = (letter) => {
   currentTile++;
 };
 
+// Clicking the backspace button
 const deleteLetter = () => {
   currentTile--;
   const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
   tile.textContent = "";
   rows[currentRow][currentTile] = "";
   tile.setAttribute("data", "");
+};
+
+// Clicking the ENTER button
+const checkUserInput = () => {
+  const userInput = rows[currentRow].join("");
+  console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
 };
