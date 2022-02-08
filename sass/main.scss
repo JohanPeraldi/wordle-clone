@@ -1,0 +1,75 @@
+$color-primary-light: white;
+$color-secondary-light: #818384;
+$color-primary-dark: #121213;
+$color-secondary-dark: #3a3a3c;
+
+* {
+  color: $color-primary-light;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+}
+
+body {
+  background-color: $color-primary-dark;
+}
+
+.wordle-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-container {
+  text-align: center;
+  width: 31.875rem;
+  border-bottom: 1px solid $color-secondary-dark;
+}
+
+.message-container {
+  height: 1.875rem;
+}
+
+.tile-container {
+  width: 20.625rem;
+  margin-bottom: 1.875rem;
+
+  div {
+    display: flex;
+  }
+
+  .tile {
+    width: 3.875rem;
+    height: 3.875rem;
+    border: 2px solid $color-secondary-dark;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+  }
+}
+
+.key-container {
+  width: 31.875rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  button {
+    width: 2.6875rem;
+    height: 3.625rem;
+    border-radius: 4px;
+    border: none;
+    background-color: $color-secondary-light;
+    margin: 4px;
+
+    &:nth-child(11) {
+      margin-left: 1.875rem;
+    }
+
+    &:nth-child(20),
+    &:nth-child(28) {
+      width: 4.25rem;
+    }
+  }
+}

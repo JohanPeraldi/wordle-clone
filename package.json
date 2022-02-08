@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "prettier": "^2.5.1",
+    "sass": "^1.49.7"
+  },
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss css/style.css"
+  }
+}
