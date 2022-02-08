@@ -24,6 +24,12 @@ body {
 .message-container {
   height: 1.875rem;
 }
+.message-container p {
+  background-color: #818384;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
+}
 
 .tile-container {
   width: 20.625rem;

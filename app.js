@@ -1,5 +1,6 @@
 const tileDisplay = document.querySelector(".tile-container");
 const keyboard = document.querySelector(".key-container");
+const messageDisplay = document.querySelector(".message-container");
 const keys = [
   "Q",
   "W",
@@ -104,4 +105,13 @@ const deleteLetter = () => {
 const checkUserInput = () => {
   const userInput = rows[currentRow].join("");
   console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
+  if (userInput === wordle) {
+    showMessage("Well done!");
+  }
+};
+
+const showMessage = (message) => {
+  const messageElement = document.createElement("p");
+  messageElement.textContent = message;
+  messageDisplay.append(messageElement);
 };
