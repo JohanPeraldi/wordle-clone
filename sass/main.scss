@@ -2,6 +2,8 @@ $color-primary-light: white;
 $color-secondary-light: #818384;
 $color-primary-dark: #121213;
 $color-secondary-dark: #3a3a3c;
+$color-letter-misplaced: #b59f3a;
+$color-letter-match: #538d4e;
 
 * {
   color: $color-primary-light;
@@ -78,5 +80,21 @@ body {
     &:nth-child(28) {
       width: 4.25rem;
     }
+  }
+}
+
+.overlay {
+  border: none !important;
+
+  &-letter-absent {
+    background-color: $color-secondary-dark !important;
+  }
+
+  &-letter-misplaced {
+    background-color: $color-letter-misplaced !important;
+  }
+
+  &-letter-match {
+    background-color: $color-letter-match !important;
   }
 }

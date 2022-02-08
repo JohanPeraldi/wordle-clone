@@ -105,6 +105,7 @@ const deleteLetter = () => {
 // Clicking the ENTER button
 const checkUserInput = () => {
   const userInput = rows[currentRow].join("");
+  flipTile();
   console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
   if (userInput === wordle) {
     showMessage("Well done!");
@@ -126,4 +127,18 @@ const showMessage = (message) => {
   messageElement.textContent = message;
   messageDisplay.append(messageElement);
   setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+};
+
+const flipTile = () => {
+  const rowTiles = document.querySelector(`#row-${currentRow}`).childNodes;
+  rowTiles.forEach((tile, index) => {
+    const letterData = tile.getAttribute("data");
+    if (letterData === wordle[index]) {
+      tile.classList.add("overlay", "overlay-letter-match");
+    } else if (wordle.includes(letterData)) {
+      tile.classList.add("overlay", "overlay-letter-misplaced");
+    } else {
+      tile.classList.add("overlay", "overlay-letter-absent");
+    }
+  });
 };

@@ -69,4 +69,17 @@ body {
   width: 4.25rem;
 }
 
+.overlay {
+  border: none !important;
+}
+.overlay-letter-absent {
+  background-color: #3a3a3c !important;
+}
+.overlay-letter-misplaced {
+  background-color: #b59f3a !important;
+}
+.overlay-letter-match {
+  background-color: #538d4e !important;
+}
+
 /*# sourceMappingURL=main.css.map */
