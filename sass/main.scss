@@ -5,6 +5,18 @@ $color-secondary-dark: #3a3a3c;
 $color-letter-misplaced: #b59f3a;
 $color-letter-match: #538d4e;
 
+@keyframes flipping {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
 * {
   color: $color-primary-light;
   font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
@@ -56,6 +68,12 @@ body {
     justify-content: center;
     align-items: center;
     margin: 2px;
+  }
+}
+
+.tile {
+  &.flip {
+    animation: 500ms linear flipping;
   }
 }
 

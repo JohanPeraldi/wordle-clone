@@ -123,22 +123,27 @@ const checkUserInput = () => {
 };
 
 const showMessage = (message) => {
-  const messageElement = document.createElement("p");
-  messageElement.textContent = message;
-  messageDisplay.append(messageElement);
-  setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+  setTimeout(() => {
+    const messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    messageDisplay.append(messageElement);
+    setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
+  }, 2500);
 };
 
 const flipTile = () => {
   const rowTiles = document.querySelector(`#row-${currentRow}`).childNodes;
   rowTiles.forEach((tile, index) => {
     const letterData = tile.getAttribute("data");
-    if (letterData === wordle[index]) {
-      tile.classList.add("overlay", "overlay-letter-match");
-    } else if (wordle.includes(letterData)) {
-      tile.classList.add("overlay", "overlay-letter-misplaced");
-    } else {
-      tile.classList.add("overlay", "overlay-letter-absent");
-    }
+    setTimeout(() => {
+      tile.classList.add("flip");
+      if (letterData === wordle[index]) {
+        tile.classList.add("overlay", "overlay-letter-match");
+      } else if (wordle.includes(letterData)) {
+        tile.classList.add("overlay", "overlay-letter-misplaced");
+      } else {
+        tile.classList.add("overlay", "overlay-letter-absent");
+      }
+    }, 500 * index);
   });
 };
