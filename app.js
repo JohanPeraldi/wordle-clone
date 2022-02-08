@@ -69,12 +69,15 @@ const handleClick = (letter) => {
   if (letter === "ENTER") {
     console.log("Check if word is correct");
   } else if (letter === "⇤\n") {
-    console.log("Delete letter");
+    if (currentTile > 0) {
+      deleteLetter();
+    }
   } else {
     if (currentTile < 5 && currentRow < 6) {
       addLetter(letter);
     }
   }
+  console.log(rows);
 };
 
 const addLetter = (letter) => {
@@ -83,5 +86,12 @@ const addLetter = (letter) => {
   rows[currentRow][currentTile] = letter;
   tile.setAttribute("data", letter);
   currentTile++;
-  console.log(rows);
+};
+
+const deleteLetter = () => {
+  currentTile--;
+  const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
+  tile.textContent = "";
+  rows[currentRow][currentTile] = "";
+  tile.setAttribute("data", "");
 };
