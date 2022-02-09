@@ -139,20 +139,30 @@ const changeKeyColor = (keyLetter, color) => {
 
 const flipTile = () => {
   const rowTiles = document.getElementById(`row-${currentRow}`).childNodes;
+  let checkWordle = wordle;
+  const userInput = [];
+  rowTiles.forEach((tile) => {
+    userInput.push({
+      letter: tile.getAttribute("data"),
+      color: "overlay-letter-absent",
+    });
+  });
+  userInput.forEach((userInput, index) => {
+    if (userInput.letter === wordle[index]) {
+      userInput.color = "overlay-letter-match";
+      checkWordle = checkWordle.replace(userInput.letter, "");
+    }
+  });
+  userInput.forEach((userInput) => {
+    if (checkWordle.includes(userInput.letter)) {
+      userInput.color = "overlay-letter-misplaced";
+      checkWordle = checkWordle.replace(userInput.letter, "");
+    }
+  });
   rowTiles.forEach((tile, index) => {
-    const letterData = tile.getAttribute("data");
     setTimeout(() => {
-      tile.classList.add("flip");
-      if (letterData === wordle[index]) {
-        tile.classList.add("overlay", "overlay-letter-match");
-        changeKeyColor(letterData, "overlay-letter-match");
-      } else if (wordle.includes(letterData)) {
-        tile.classList.add("overlay", "overlay-letter-misplaced");
-        changeKeyColor(letterData, "overlay-letter-misplaced");
-      } else {
-        tile.classList.add("overlay", "overlay-letter-absent");
-        changeKeyColor(letterData, "overlay-letter-absent");
-      }
+      tile.classList.add(userInput[index].color, "flip");
+      changeKeyColor(userInput[index].letter, userInput[index].color);
     }, 500 * index);
   });
 };
