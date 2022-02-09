@@ -132,7 +132,7 @@ const showMessage = (message) => {
 };
 
 const flipTile = () => {
-  const rowTiles = document.querySelector(`#row-${currentRow}`).childNodes;
+  const rowTiles = document.getElementById(`row-${currentRow}`).childNodes;
   rowTiles.forEach((tile, index) => {
     const letterData = tile.getAttribute("data");
     setTimeout(() => {
