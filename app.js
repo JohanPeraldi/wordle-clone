@@ -80,21 +80,23 @@ keys.forEach((key) => {
 });
 
 const handleClick = (letter) => {
-  console.log("clicked", letter);
-  if (letter === "ENTER") {
-    if (currentTile > 4) {
-      checkUserInput();
+  if (!isGameOver) {
+    console.log("clicked", letter);
+    if (letter === "ENTER") {
+      if (currentTile > 4) {
+        checkUserInput();
+      }
+    } else if (letter === "⇤\n") {
+      if (currentTile > 0) {
+        deleteLetter();
+      }
+    } else {
+      if (currentTile < 5 && currentRow < 6) {
+        addLetter(letter);
+      }
     }
-  } else if (letter === "⇤\n") {
-    if (currentTile > 0) {
-      deleteLetter();
-    }
-  } else {
-    if (currentTile < 5 && currentRow < 6) {
-      addLetter(letter);
-    }
+    console.log(rows);
   }
-  console.log(rows);
 };
 
 // Clicking a letter button
@@ -118,30 +120,48 @@ const deleteLetter = () => {
 // Clicking the ENTER button
 const checkUserInput = () => {
   const userInput = rows[currentRow].join("");
-  flipTile();
-  console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
-  if (userInput === wordle) {
-    showMessage("Well done!");
-    isGameOver = true;
-  } else {
-    if (currentRow >= 5) {
-      isGameOver = true;
-      showMessage("Game over");
-    }
-    if (currentRow < 5) {
-      currentRow++;
-      currentTile = 0;
-    }
-  }
+  console.log(userInput);
+  fetch(`http://localhost:8080/check/?word=${userInput}`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      if (json === "Entry word not found") {
+        showMessage("Word is not in dictionary!");
+      } else {
+        flipTile();
+        console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
+        if (userInput === wordle) {
+          showMessage("Well done!");
+          isGameOver = true;
+        } else {
+          if (currentRow >= 5) {
+            isGameOver = true;
+            showMessage("Game over");
+          }
+          if (currentRow < 5) {
+            currentRow++;
+            currentTile = 0;
+          }
+        }
+      }
+    })
+    .catch((err) => console.log(err));
 };
 
 const showMessage = (message) => {
-  setTimeout(() => {
-    const messageElement = document.createElement("p");
-    messageElement.textContent = message;
+  const createMessageElement = () => {
     messageDisplay.append(messageElement);
     setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
-  }, 2500);
+  };
+  const messageElement = document.createElement("p");
+  messageElement.textContent = message;
+  if (message === "Word is not in dictionary!") {
+    createMessageElement();
+  } else {
+    setTimeout(() => {
+      createMessageElement();
+    }, 2500);
+  }
 };
 
 // Color keyboard keys after user input check
