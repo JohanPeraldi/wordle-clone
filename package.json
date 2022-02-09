@@ -1,9 +1,33 @@
 {
   "dependencies": {
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "sass": "^1.49.7"
   },
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss css/style.css"
-  }
+    "sass": "sass --watch ./sass/main.scss css/style.css",
+    "start:backend": "nodemon index.js"
+  },
+  "name": "wordle",
+  "description": "A Wordle clone built with JavaScript, from [Ania Kubow's YouTube tutorial](https://www.youtube.com/watch?v=mpby4HiElek&t=384s)",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohanPeraldi/wordle-clone.git"
+  },
+  "keywords": [
+    "Wordle"
+  ],
+  "author": "Johan Peraldi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohanPeraldi/wordle-clone/issues"
+  },
+  "homepage": "https://github.com/JohanPeraldi/wordle-clone#readme"
 }
