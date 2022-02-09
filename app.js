@@ -32,10 +32,23 @@ const keys = [
   "⇤\n",
 ];
 
-const wordle = "OVENS";
+let wordle;
 let currentRow = 0;
 let currentTile = 0;
 let isGameOver = false;
+
+const getWordle = () => {
+  // fetch(`http://localhost:${process.env.PORT}/word`) // This does not work
+  fetch(`http://localhost:8080/word`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      wordle = json.toUpperCase();
+    })
+    .catch((err) => console.log(err));
+};
+
+getWordle(); // Should be part of an init function!
 
 const rows = [
   ["", "", "", "", ""],

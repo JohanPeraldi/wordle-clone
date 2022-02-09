@@ -1,9 +1,12 @@
 const express = require("express");
 const axios = require("axios").default;
+const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
 const app = express();
+
+app.use(cors());
 
 app.get("/word", (req, res) => {
   const options = {
