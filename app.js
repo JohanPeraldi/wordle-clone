@@ -131,6 +131,12 @@ const showMessage = (message) => {
   }, 2500);
 };
 
+// Color keyboard keys after user input check
+const changeKeyColor = (keyLetter, color) => {
+  const key = document.getElementById(keyLetter);
+  key.classList.add(color);
+};
+
 const flipTile = () => {
   const rowTiles = document.getElementById(`row-${currentRow}`).childNodes;
   rowTiles.forEach((tile, index) => {
@@ -139,10 +145,13 @@ const flipTile = () => {
       tile.classList.add("flip");
       if (letterData === wordle[index]) {
         tile.classList.add("overlay", "overlay-letter-match");
+        changeKeyColor(letterData, "overlay-letter-match");
       } else if (wordle.includes(letterData)) {
         tile.classList.add("overlay", "overlay-letter-misplaced");
+        changeKeyColor(letterData, "overlay-letter-misplaced");
       } else {
         tile.classList.add("overlay", "overlay-letter-absent");
+        changeKeyColor(letterData, "overlay-letter-absent");
       }
     }, 500 * index);
   });
