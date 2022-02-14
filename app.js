@@ -1,201 +1,212 @@
-const tileDisplay = document.querySelector(".tile-container");
-const keyboard = document.querySelector(".key-container");
-const messageDisplay = document.querySelector(".message-container");
-const keys = [
-  "Q",
-  "W",
-  "E",
-  "R",
-  "T",
-  "Y",
-  "U",
-  "I",
-  "O",
-  "P",
-  "A",
-  "S",
-  "D",
-  "F",
-  "G",
-  "H",
-  "J",
-  "K",
-  "L",
-  "ENTER",
-  "Z",
-  "X",
-  "C",
-  "V",
-  "B",
-  "N",
-  "M",
-  "⇤\n",
-];
-
-let wordle;
-let currentRow = 0;
-let currentTile = 0;
-let isGameOver = false;
-
-const getWordle = () => {
-  // fetch(`http://localhost:${process.env.PORT}/word`) // This does not work
-  fetch(`http://localhost:8080/word`)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      wordle = json.toUpperCase();
-    })
-    .catch((err) => console.log(err));
-};
-
-getWordle(); // Should be part of an init function!
-
-const rows = [
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-];
-
-rows.forEach((row, rowIndex) => {
-  const rowElement = document.createElement("div");
-  rowElement.setAttribute("id", "row-" + rowIndex);
-  row.forEach((tile, tileIndex) => {
-    const tileElement = document.createElement("div");
-    tileElement.setAttribute("id", "row-" + rowIndex + "-tile-" + tileIndex);
-    tileElement.classList.add("tile");
-    rowElement.append(tileElement);
-  });
-  tileDisplay.append(rowElement);
-});
-
-keys.forEach((key) => {
-  const buttonElement = document.createElement("button");
-  buttonElement.textContent = key;
-  buttonElement.setAttribute("id", key);
-  buttonElement.addEventListener("click", () => handleClick(key));
-  keyboard.append(buttonElement);
-});
-
-const handleClick = (letter) => {
-  if (!isGameOver) {
-    console.log("clicked", letter);
-    if (letter === "ENTER") {
-      if (currentTile > 4) {
-        checkUserInput();
-      }
-    } else if (letter === "⇤\n") {
-      if (currentTile > 0) {
-        deleteLetter();
-      }
-    } else {
-      if (currentTile < 5 && currentRow < 6) {
-        addLetter(letter);
-      }
-    }
-    console.log(rows);
-  }
-};
-
-// Clicking a letter button
-const addLetter = (letter) => {
-  const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
-  tile.textContent = letter;
-  rows[currentRow][currentTile] = letter;
-  tile.setAttribute("data", letter);
-  currentTile++;
-};
-
-// Clicking the backspace button
-const deleteLetter = () => {
-  currentTile--;
-  const tile = document.getElementById(`row-${currentRow}-tile-${currentTile}`);
-  tile.textContent = "";
-  rows[currentRow][currentTile] = "";
-  tile.setAttribute("data", "");
-};
-
-// Clicking the ENTER button
-const checkUserInput = () => {
-  const userInput = rows[currentRow].join("");
-  console.log(userInput);
-  fetch(`http://localhost:8080/check/?word=${userInput}`)
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      if (json === "Entry word not found") {
-        showMessage("Word is not in dictionary!");
+const app = {
+  // Initialize app
+  init: function () {
+    app.getWordle();
+    app.createRows();
+    app.createKeyboard();
+  },
+  getWordle: function () {
+    // fetch(`http://localhost:${process.env.PORT}/word`) // This does not work
+    fetch(`http://localhost:8080/word`)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        app.wordle = json.toUpperCase();
+      })
+      .catch((err) => console.log(err));
+  },
+  handleClick: function (letter) {
+    if (!app.gameOver) {
+      console.log("clicked", letter);
+      if (letter === "ENTER") {
+        if (app.currentTile > 4) {
+          app.checkUserInput();
+        }
+      } else if (letter === "⇤\n") {
+        if (app.currentTile > 0) {
+          app.deleteLetter();
+        }
       } else {
-        flipTile();
-        console.log(`User input is: ${userInput}\nWordle is: ${wordle}`);
-        if (userInput === wordle) {
-          showMessage("Well done!");
-          isGameOver = true;
-        } else {
-          if (currentRow >= 5) {
-            isGameOver = true;
-            showMessage("Game over");
-          }
-          if (currentRow < 5) {
-            currentRow++;
-            currentTile = 0;
-          }
+        if (app.currentTile < 5 && app.currentRow < 6) {
+          app.addLetter(letter);
         }
       }
-    })
-    .catch((err) => console.log(err));
-};
-
-const showMessage = (message) => {
-  const createMessageElement = () => {
-    messageDisplay.append(messageElement);
-    setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
-  };
-  const messageElement = document.createElement("p");
-  messageElement.textContent = message;
-  if (message === "Word is not in dictionary!") {
-    createMessageElement();
-  } else {
-    setTimeout(() => {
+      console.log(app.rows);
+    }
+  },
+  // Clicking a letter button
+  addLetter: function (letter) {
+    const tile = document.getElementById(
+      `row-${app.currentRow}-tile-${app.currentTile}`
+    );
+    tile.textContent = letter;
+    app.rows[app.currentRow][app.currentTile] = letter;
+    tile.setAttribute("data", letter);
+    app.currentTile++;
+  },
+  // Clicking the backspace button
+  deleteLetter: function () {
+    app.currentTile--;
+    const tile = document.getElementById(
+      `row-${app.currentRow}-tile-${app.currentTile}`
+    );
+    tile.textContent = "";
+    app.rows[app.currentRow][app.currentTile] = "";
+    tile.setAttribute("data", "");
+  },
+  // Clicking the ENTER button
+  checkUserInput: function () {
+    const userInput = app.rows[app.currentRow].join("");
+    console.log(userInput);
+    fetch(`http://localhost:8080/check/?word=${userInput}`)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        if (json === "Entry word not found") {
+          app.showMessage("Word is not in dictionary!");
+        } else {
+          app.flipTile();
+          console.log(`User input is: ${userInput}\nWordle is: ${app.wordle}`);
+          if (userInput === app.wordle) {
+            app.showMessage("Well done!");
+            app.gameOver = true;
+          } else {
+            if (app.currentRow >= 5) {
+              app.gameOver = true;
+              app.showMessage("Game over");
+            }
+            if (app.currentRow < 5) {
+              app.currentRow++;
+              app.currentTile = 0;
+            }
+          }
+        }
+      })
+      .catch((err) => console.log(err));
+  },
+  showMessage: function (message) {
+    const createMessageElement = () => {
+      const messageDisplay = document.querySelector(".message-container");
+      messageDisplay.append(messageElement);
+      setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
+    };
+    const messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    if (message === "Word is not in dictionary!") {
       createMessageElement();
-    }, 2500);
-  }
-};
-
-// Color keyboard keys after user input check
-const changeKeyColor = (keyLetter, color) => {
-  const key = document.getElementById(keyLetter);
-  key.classList.add(color);
-};
-
-const flipTile = () => {
-  const rowTiles = document.getElementById(`row-${currentRow}`).childNodes;
-  let checkWordle = wordle;
-  const userInput = [];
-  rowTiles.forEach((tile) => {
-    userInput.push({
-      letter: tile.getAttribute("data"),
-      color: "overlay-letter-absent",
+    } else {
+      setTimeout(() => {
+        createMessageElement();
+      }, 2500);
+    }
+  },
+  // Color keyboard keys after user input check
+  changeKeyColor: function (keyLetter, color) {
+    const key = document.getElementById(keyLetter);
+    key.classList.add(color);
+  },
+  flipTile: function () {
+    const rowTiles = document.getElementById(
+      `row-${app.currentRow}`
+    ).childNodes;
+    let checkWordle = app.wordle;
+    const userInput = [];
+    rowTiles.forEach((tile) => {
+      userInput.push({
+        letter: tile.getAttribute("data"),
+        color: "overlay-letter-absent",
+      });
     });
-  });
-  userInput.forEach((userInput, index) => {
-    if (userInput.letter === wordle[index]) {
-      userInput.color = "overlay-letter-match";
-      checkWordle = checkWordle.replace(userInput.letter, "");
-    }
-  });
-  userInput.forEach((userInput) => {
-    if (checkWordle.includes(userInput.letter)) {
-      userInput.color = "overlay-letter-misplaced";
-      checkWordle = checkWordle.replace(userInput.letter, "");
-    }
-  });
-  rowTiles.forEach((tile, index) => {
-    setTimeout(() => {
-      tile.classList.add(userInput[index].color, "flip");
-      changeKeyColor(userInput[index].letter, userInput[index].color);
-    }, 500 * index);
-  });
+    userInput.forEach((userInput, index) => {
+      if (userInput.letter === app.wordle[index]) {
+        userInput.color = "overlay-letter-match";
+        checkWordle = checkWordle.replace(userInput.letter, "");
+      }
+    });
+    userInput.forEach((userInput) => {
+      if (checkWordle.includes(userInput.letter)) {
+        userInput.color = "overlay-letter-misplaced";
+        checkWordle = checkWordle.replace(userInput.letter, "");
+      }
+    });
+    rowTiles.forEach((tile, index) => {
+      setTimeout(() => {
+        tile.classList.add(userInput[index].color, "flip");
+        app.changeKeyColor(userInput[index].letter, userInput[index].color);
+      }, 500 * index);
+    });
+  },
+  // Create game rows
+  createRows: function () {
+    const tileDisplay = document.querySelector(".tile-container");
+    app.rows.forEach((row, rowIndex) => {
+      const rowElement = document.createElement("div");
+      rowElement.setAttribute("id", "row-" + rowIndex);
+      row.forEach((tile, tileIndex) => {
+        const tileElement = document.createElement("div");
+        tileElement.setAttribute(
+          "id",
+          "row-" + rowIndex + "-tile-" + tileIndex
+        );
+        tileElement.classList.add("tile");
+        rowElement.append(tileElement);
+      });
+      tileDisplay.append(rowElement);
+    });
+  },
+  // Create keyboard
+  createKeyboard: function () {
+    const keyboard = document.querySelector(".key-container");
+    app.keys.forEach((key) => {
+      const buttonElement = document.createElement("button");
+      buttonElement.textContent = key;
+      buttonElement.setAttribute("id", key);
+      buttonElement.addEventListener("click", () => app.handleClick(key));
+      keyboard.append(buttonElement);
+    });
+  },
+  rows: [
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+  ],
+  keys: [
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "ENTER",
+    "Z",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    "⇤\n",
+  ],
+  wordle: null,
+  currentRow: 0,
+  currentTile: 0,
+  gameOver: false,
 };
+
+document.addEventListener("DOMContentLoaded", app.init);
