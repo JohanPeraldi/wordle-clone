@@ -59,8 +59,7 @@ body {
   align-items: center;
   margin: 2px;
 }
-
-.tile.flip {
+.tile-container .tile.flip {
   animation: 500ms linear flipping;
 }
 
@@ -76,6 +75,9 @@ body {
   border: none;
   background-color: #818384;
   margin: 4px;
+}
+.key-container button:hover {
+  cursor: pointer;
 }
 .key-container button:nth-child(11) {
   margin-left: 1.875rem;

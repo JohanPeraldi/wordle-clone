@@ -68,12 +68,10 @@ body {
     justify-content: center;
     align-items: center;
     margin: 2px;
-  }
-}
 
-.tile {
-  &.flip {
-    animation: 500ms linear flipping;
+    &.flip {
+      animation: 500ms linear flipping;
+    }
   }
 }
 
@@ -89,6 +87,10 @@ body {
     border: none;
     background-color: $color-secondary-light;
     margin: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &:nth-child(11) {
       margin-left: 1.875rem;
