@@ -63,12 +63,12 @@ const app = {
       .then((json) => {
         console.log(json);
         if (json === "Entry word not found") {
-          app.showMessage("Word is not in dictionary!");
+          app.showMessage("Not in word list");
         } else {
           app.flipTile();
           console.log(`User input is: ${userInput}\nWordle is: ${app.wordle}`);
           if (userInput === app.wordle) {
-            app.showMessage("Well done!");
+            app.showMessage("Impressive");
             app.gameOver = true;
           } else {
             if (app.currentRow >= 5) {
@@ -92,7 +92,7 @@ const app = {
     };
     const messageElement = document.createElement("p");
     messageElement.textContent = message;
-    if (message === "Word is not in dictionary!") {
+    if (message === "Not in word list") {
       createMessageElement();
     } else {
       setTimeout(() => {
