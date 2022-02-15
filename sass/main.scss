@@ -2,7 +2,7 @@ $color-primary-light: white;
 $color-secondary-light: #818384;
 $color-primary-dark: #121213;
 $color-secondary-dark: #3a3a3c;
-$color-letter-misplaced: #b59f3a;
+$color-letter-misplaced: #b59f3b;
 $color-letter-match: #538d4e;
 
 @keyframes flipping {
@@ -19,7 +19,7 @@ $color-letter-match: #538d4e;
 
 * {
   color: $color-primary-light;
-  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
@@ -36,7 +36,7 @@ body {
 
 .title-container {
   text-align: center;
-  width: 31.875rem;
+  width: 100%;
   border-bottom: 1px solid $color-secondary-dark;
 }
 
@@ -68,6 +68,8 @@ body {
     justify-content: center;
     align-items: center;
     margin: 2px;
+    font-size: 1.8rem;
+    font-weight: bold;
 
     &.flip {
       animation: 500ms linear flipping;

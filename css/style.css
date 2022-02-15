@@ -11,7 +11,7 @@
 }
 * {
   color: white;
-  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 
 .title-container {
   text-align: center;
-  width: 31.875rem;
+  width: 100%;
   border-bottom: 1px solid #3a3a3c;
 }
 
@@ -58,6 +58,8 @@ body {
   justify-content: center;
   align-items: center;
   margin: 2px;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 .tile-container .tile.flip {
   animation: 500ms linear flipping;
@@ -93,7 +95,7 @@ body {
   background-color: #3a3a3c !important;
 }
 .overlay-letter-misplaced {
-  background-color: #b59f3a !important;
+  background-color: #b59f3b !important;
 }
 .overlay-letter-match {
   background-color: #538d4e !important;
