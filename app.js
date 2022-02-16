@@ -117,15 +117,15 @@ const app = {
         color: "overlay-letter-absent",
       });
     });
-    userInput.forEach((userInput, index) => {
-      if (userInput.letter === app.wordle[index]) {
-        userInput.color = "overlay-letter-match";
-        checkWordle = checkWordle.replace(userInput.letter, "");
-      }
-    });
     userInput.forEach((userInput) => {
       if (checkWordle.includes(userInput.letter)) {
         userInput.color = "overlay-letter-misplaced";
+        checkWordle = checkWordle.replace(userInput.letter, "");
+      }
+    });
+    userInput.forEach((userInput, index) => {
+      if (userInput.letter === app.wordle[index]) {
+        userInput.color = "overlay-letter-match";
         checkWordle = checkWordle.replace(userInput.letter, "");
       }
     });
