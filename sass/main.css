@@ -103,4 +103,38 @@ body {
   background-color: #538d4e !important;
 }
 
+.instructions-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: #121213;
+}
+.instructions-overlay__content {
+  max-width: 33vw;
+  margin: 0 auto;
+}
+.instructions-overlay__title {
+  text-align: center;
+  text-transform: uppercase;
+}
+.instructions-overlay__close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 32vw;
+  fill: white;
+}
+.instructions-overlay__instructions strong {
+  font-weight: bold;
+}
+.instructions-overlay__instructions .allcaps {
+  text-transform: uppercase;
+}
+.instructions-overlay__examples {
+  border-top: 1px solid #3a3a3c;
+  border-bottom: 1px solid #3a3a3c;
+}
+
 /*# sourceMappingURL=main.css.map */

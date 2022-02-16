@@ -122,3 +122,49 @@ body {
     background-color: $color-letter-match !important;
   }
 }
+
+.instructions-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: $color-primary-dark;
+
+  &__content {
+    max-width: 33vw;
+    margin: 0 auto;
+  }
+
+  &__header {
+    //display: flex;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 1rem;
+    right: 32vw;
+    fill: $color-primary-light;
+  }
+
+  &__instructions {
+    strong {
+      font-weight: bold;
+    }
+
+    .allcaps {
+      text-transform: uppercase;
+    }
+  }
+
+  &__examples {
+    border-top: 1px solid $color-secondary-dark;
+    border-bottom: 1px solid $color-secondary-dark;
+  }
+}
