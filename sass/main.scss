@@ -29,17 +29,16 @@ $color-letter-match: #538d4e;
 }
 
 @mixin letter-absent {
-  border-color: $color-secondary-dark;
   background-color: $color-secondary-dark !important;
 }
 
 @mixin letter-misplaced {
-  border-color: $color-letter-misplaced;
+  border-color: $color-letter-misplaced !important;
   background-color: $color-letter-misplaced !important;
 }
 
 @mixin letter-match {
-  border-color: $color-letter-match;
+  border-color: $color-letter-match !important;
   background-color: $color-letter-match !important;
 }
 
@@ -127,7 +126,6 @@ body {
 }
 
 .overlay {
-  border: none !important;
 
   &-letter-absent {
     @include letter-absent;
@@ -158,10 +156,6 @@ body {
   &__content {
     max-width: 33vw;
     margin: 0 auto;
-  }
-
-  &__header {
-    //display: flex;
   }
 
   &__title {

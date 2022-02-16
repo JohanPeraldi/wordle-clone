@@ -90,19 +90,15 @@ body {
   width: 4.25rem;
 }
 
-.overlay {
-  border: none !important;
-}
 .overlay-letter-absent {
-  border-color: #3a3a3c;
   background-color: #3a3a3c !important;
 }
 .overlay-letter-misplaced {
-  border-color: #b59f3b;
+  border-color: #b59f3b !important;
   background-color: #b59f3b !important;
 }
 .overlay-letter-match {
-  border-color: #538d4e;
+  border-color: #538d4e !important;
   background-color: #538d4e !important;
 }
 
@@ -159,15 +155,14 @@ body {
   font-weight: bold;
 }
 .instructions-overlay__example--tile.letter-absent {
-  border-color: #3a3a3c;
   background-color: #3a3a3c !important;
 }
 .instructions-overlay__example--tile.letter-misplaced {
-  border-color: #b59f3b;
+  border-color: #b59f3b !important;
   background-color: #b59f3b !important;
 }
 .instructions-overlay__example--tile.letter-match {
-  border-color: #538d4e;
+  border-color: #538d4e !important;
   background-color: #538d4e !important;
 }
 
