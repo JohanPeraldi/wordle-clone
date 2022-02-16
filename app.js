@@ -1,9 +1,14 @@
 const app = {
   // Initialize app
   init: function () {
+    // Fetch the wordle with call to API
     app.getWordle();
+    // Create game rows
     app.createRows();
+    // Create keyboard
     app.createKeyboard();
+    // Activate event listeners
+    app.listenToEvents();
   },
   getWordle: function () {
     // fetch(`http://localhost:${process.env.PORT}/word`) // This does not work
@@ -163,6 +168,19 @@ const app = {
       buttonElement.setAttribute("id", key);
       buttonElement.addEventListener("click", () => app.handleClick(key));
       keyboard.append(buttonElement);
+    });
+  },
+  // Activate event listeners
+  listenToEvents: function () {
+    // Select close button (to close instructions overlay)
+    const closeButton = document.getElementById("instructions-hide");
+    // Select instructions overlay section
+    const instructionsOverlayElement = document.getElementById(
+      "instructions-overlay"
+    );
+    // Add click event listener on close button
+    closeButton.addEventListener("click", () => {
+      instructionsOverlayElement.classList.add("hidden");
     });
   },
   rows: [

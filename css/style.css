@@ -115,6 +115,9 @@ body {
   z-index: 1000;
   background-color: #121213;
 }
+.instructions-overlay.hidden {
+  display: none;
+}
 .instructions-overlay__content {
   max-width: 33vw;
   margin: 0 auto;
@@ -128,6 +131,7 @@ body {
   top: 1rem;
   right: 32vw;
   fill: white;
+  cursor: pointer;
 }
 .instructions-overlay__instructions strong {
   font-weight: bold;
