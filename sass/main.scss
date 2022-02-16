@@ -17,6 +17,32 @@ $color-letter-match: #538d4e;
   }
 }
 
+@mixin tile-styles {
+  border: 2px solid $color-secondary-dark;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+@mixin letter-absent {
+  border-color: $color-secondary-dark;
+  background-color: $color-secondary-dark !important;
+}
+
+@mixin letter-misplaced {
+  border-color: $color-letter-misplaced;
+  background-color: $color-letter-misplaced !important;
+}
+
+@mixin letter-match {
+  border-color: $color-letter-match;
+  background-color: $color-letter-match !important;
+}
+
 * {
   color: $color-primary-light;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -64,14 +90,7 @@ body {
   .tile {
     width: 3.875rem;
     height: 3.875rem;
-    border: 2px solid $color-secondary-dark;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    font-size: 1.8rem;
-    font-weight: bold;
+    @include tile-styles;
 
     &.flip {
       animation: 500ms linear flipping;
@@ -111,15 +130,15 @@ body {
   border: none !important;
 
   &-letter-absent {
-    background-color: $color-secondary-dark !important;
+    @include letter-absent;
   }
 
   &-letter-misplaced {
-    background-color: $color-letter-misplaced !important;
+    @include letter-misplaced;
   }
 
   &-letter-match {
-    background-color: $color-letter-match !important;
+    @include letter-match;
   }
 }
 
@@ -166,5 +185,30 @@ body {
   &__examples {
     border-top: 1px solid $color-secondary-dark;
     border-bottom: 1px solid $color-secondary-dark;
+  }
+
+  &__example {
+
+    &--row {
+      display: flex;
+    }
+
+    &--tile {
+      width: 3rem;
+      height: 3rem;
+      @include tile-styles;
+
+      &.letter-absent {
+        @include letter-absent;
+      }
+
+      &.letter-misplaced {
+        @include letter-misplaced;
+      }
+
+      &.letter-match {
+        @include letter-match;
+      }
+    }
   }
 }
