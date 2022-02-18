@@ -90,16 +90,82 @@ body {
   width: 4.25rem;
 }
 
-.overlay {
-  border: none !important;
-}
 .overlay-letter-absent {
   background-color: #3a3a3c !important;
 }
 .overlay-letter-misplaced {
+  border-color: #b59f3b !important;
   background-color: #b59f3b !important;
 }
 .overlay-letter-match {
+  border-color: #538d4e !important;
+  background-color: #538d4e !important;
+}
+
+.instructions-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: #121213;
+}
+.instructions-overlay.hidden {
+  display: none;
+}
+.instructions-overlay__content {
+  max-width: 33vw;
+  margin: 0 auto;
+}
+.instructions-overlay__title {
+  text-align: center;
+  text-transform: uppercase;
+}
+.instructions-overlay__open-icon {
+  cursor: pointer;
+}
+.instructions-overlay__close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 32vw;
+  fill: white;
+  cursor: pointer;
+}
+.instructions-overlay__instructions strong {
+  font-weight: bold;
+}
+.instructions-overlay__instructions .allcaps {
+  text-transform: uppercase;
+}
+.instructions-overlay__examples {
+  border-top: 1px solid #3a3a3c;
+  border-bottom: 1px solid #3a3a3c;
+}
+.instructions-overlay__example--row {
+  display: flex;
+}
+.instructions-overlay__example--tile {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #3a3a3c;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.instructions-overlay__example--tile.letter-absent {
+  background-color: #3a3a3c !important;
+}
+.instructions-overlay__example--tile.letter-misplaced {
+  border-color: #b59f3b !important;
+  background-color: #b59f3b !important;
+}
+.instructions-overlay__example--tile.letter-match {
+  border-color: #538d4e !important;
   background-color: #538d4e !important;
 }
 

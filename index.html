@@ -12,12 +12,72 @@
 <body>
   <main class="wordle-container">
     <div class="title-container">
+      <span id="instructions-show" class="instructions-overlay__open-icon">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 18.01L12.01 17.9989" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
       <h1 class="title">Wordle</h1>
     </div>
     <div class="message-container"></div>
     <div class="tile-container"></div>
     <div class="key-container"></div>
   </main>
+  <section id="instructions-overlay" class="instructions-overlay">
+    <div class="instructions-overlay__content">
+      <header class="instructions-overlay__header">
+        <h1 class="instructions-overlay__title">How to play</h1>
+        <span id="instructions-hide" class="instructions-overlay__close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path fill="" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          </svg>
+        </span>
+      </header>
+      <div class="instructions-overlay__instructions-container">
+        <div class="instructions-overlay__instructions">
+          <p>Guess the <span class="allcaps"><strong>Wordle</strong></span> in six tries.</p>
+          <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+          <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+          <div class="instructions-overlay__examples">
+            <p><strong>Examples</strong></p>
+            <div class="instructions-overlay__example">
+              <div class="instructions-overlay__example--row">
+                <span class="instructions-overlay__example--tile letter-match">W</span>
+                <span class="instructions-overlay__example--tile">E</span>
+                <span class="instructions-overlay__example--tile">A</span>
+                <span class="instructions-overlay__example--tile">R</span>
+                <span class="instructions-overlay__example--tile">Y</span>
+              </div>
+              <p>The letter <strong>W</strong> is in the word and in the correct spot.</p>
+            </div>
+            <div class="instructions-overlay__example">
+              <div class="instructions-overlay__example--row">
+                <span class="instructions-overlay__example--tile">P</span>
+                <span class="instructions-overlay__example--tile letter-misplaced">I</span>
+                <span class="instructions-overlay__example--tile">L</span>
+                <span class="instructions-overlay__example--tile">L</span>
+                <span class="instructions-overlay__example--tile">S</span>
+              </div>
+              <p>The letter <strong>I</strong> is in the word but in the wrong spot.</p>
+            </div>
+            <div class="instructions-overlay__example">
+              <div class="instructions-overlay__example--row">
+                <span class="instructions-overlay__example--tile">V</span>
+                <span class="instructions-overlay__example--tile">A</span>
+                <span class="instructions-overlay__example--tile">G</span>
+                <span class="instructions-overlay__example--tile overlay-letter-absent">U</span>
+                <span class="instructions-overlay__example--tile">E</span>
+              </div>
+              <p>The letter <strong>U</strong> is not in the word in any spot.</p>
+            </div>
+          </div>
+          <p><strong>A new <span class="allcaps">Wordle</span> will be available each day!</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
   <script src="./app.js"></script>
 </body>
 </html>
