@@ -172,12 +172,21 @@ const app = {
   },
   // Activate event listeners
   listenToEvents: function () {
-    // Select close button (to close instructions overlay)
-    const closeButton = document.getElementById("instructions-hide");
+    // OPEN INSTRUCTIONS OVERLAY
+    // Select open button (to open instructions overlay)
+    const openButton = document.getElementById("instructions-show");
     // Select instructions overlay section
     const instructionsOverlayElement = document.getElementById(
       "instructions-overlay"
     );
+    // Add click event listener on open button
+    openButton.addEventListener("click", () => {
+      instructionsOverlayElement.classList.remove("hidden");
+    });
+
+    // CLOSE INSTRUCTIONS OVERLAY
+    // Select close button (to close instructions overlay)
+    const closeButton = document.getElementById("instructions-hide");
     // Add click event listener on close button
     closeButton.addEventListener("click", () => {
       instructionsOverlayElement.classList.add("hidden");

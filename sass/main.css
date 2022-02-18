@@ -122,6 +122,9 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
+.instructions-overlay__open-icon {
+  cursor: pointer;
+}
 .instructions-overlay__close-icon {
   position: absolute;
   top: 1rem;

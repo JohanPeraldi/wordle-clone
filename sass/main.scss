@@ -163,6 +163,10 @@ body {
     text-transform: uppercase;
   }
 
+  &__open-icon {
+    cursor: pointer;
+  }
+
   &__close-icon {
     position: absolute;
     top: 1rem;
