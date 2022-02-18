@@ -26,10 +26,38 @@ body {
   align-items: center;
 }
 
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3a3a3c;
+}
+.navigation__left, .navigation__right {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.hamburger,
+.statistics {
+  margin-right: 0.5rem;
+}
+
+.hamburger svg,
+.statistics svg,
+.settings svg {
+  fill: white;
+}
+.hamburger:hover,
+.statistics:hover,
+.settings:hover {
+  cursor: pointer;
+}
+
 .title-container {
   text-align: center;
   width: 100%;
-  border-bottom: 1px solid #3a3a3c;
 }
 
 .message-container {
@@ -122,14 +150,19 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-.instructions-overlay__open-icon {
+.instructions-overlay__open-icon:hover {
   cursor: pointer;
+}
+.instructions-overlay__open-icon svg {
+  fill: white;
 }
 .instructions-overlay__close-icon {
   position: absolute;
   top: 1rem;
   right: 32vw;
   fill: white;
+}
+.instructions-overlay__close-icon:hover {
   cursor: pointer;
 }
 .instructions-overlay__instructions strong {
