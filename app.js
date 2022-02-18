@@ -106,7 +106,8 @@ const app = {
           } else {
             if (app.currentRow >= 5) {
               app.gameOver = true;
-              app.showMessage("Game over");
+              // Show wordle if not found after 6 attempts
+              app.showMessage(app.wordle);
             }
             if (app.currentRow < 5) {
               app.currentRow++;
