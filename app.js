@@ -73,7 +73,35 @@ const app = {
           app.flipTile();
           console.log(`User input is: ${userInput}\nWordle is: ${app.wordle}`);
           if (userInput === app.wordle) {
-            app.showMessage("Impressive");
+            // Add a switch to check on which row we are and display corresponding message
+            // if on row 0, message = "Genius"
+            // if on row 1, message = "Magnificent"
+            // if on row 2, message = "Impressive"
+            // if on row 3, message = "Splendid"
+            // if on row 4, message = "Great"
+            // if on row 5, message = "Phew"
+            // Store the message in a variable
+            let message;
+            switch (app.currentRow) {
+              case 0:
+                message = "Genius";
+                break;
+              case 1:
+                message = "Magnificent";
+                break;
+              case 2:
+                message = "Impressive";
+                break;
+              case 3:
+                message = "Splendid";
+                break;
+              case 4:
+                message = "Great";
+                break;
+              default:
+                message = "Phew";
+            }
+            app.showMessage(message);
             app.gameOver = true;
           } else {
             if (app.currentRow >= 5) {
