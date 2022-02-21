@@ -220,6 +220,24 @@ const app = {
     closeButton.addEventListener("click", () => {
       instructionsOverlayElement.classList.add("hidden");
     });
+
+    // OPEN STATISTICS OVERLAY
+    // Select statistics button
+    const statisticsButton = document.getElementById("statistics-show");
+    // Select statistics overlay section
+    const statisticsOverlayElement =
+      document.getElementById("statistics-overlay");
+    // Add click event listener on statistics button
+    statisticsButton.addEventListener("click", () => {
+      statisticsOverlayElement.classList.remove("hidden");
+    });
+
+    // CLOSE STATISTICS OVERLAY
+    // Add click event on statistics overlay
+    statisticsOverlayElement.addEventListener("click", () => {
+      // Add "hidden" class to statistics overlay
+      statisticsOverlayElement.classList.add("hidden");
+    });
   },
   rows: [
     ["", "", "", "", ""],

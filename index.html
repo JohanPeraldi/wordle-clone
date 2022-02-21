@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="navigation__right">
-          <span class="statistics">
+          <span id="statistics-show" class="statistics">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
               <path fill="" d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"></path>
             </svg>
@@ -48,8 +48,7 @@
     <div class="tile-container"></div>
     <div class="key-container"></div>
   </main>
-  <!-- REMOVE hidden class !!! -->
-  <section id="instructions-overlay" class="instructions-overlay hidden">
+  <section id="instructions-overlay" class="instructions-overlay">
     <div class="instructions-overlay__content">
       <header class="instructions-overlay__header">
         <h1 class="instructions-overlay__title">How to play</h1>
@@ -102,7 +101,7 @@
       </div>
     </div>
   </section>
-  <section id="statistics-overlay" class="statistics-overlay">
+  <section id="statistics-overlay" class="statistics-overlay hidden">
     <div class="statistics-overlay__content">
       <span id="statistics-hide" class="statistics-overlay__close-icon">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
