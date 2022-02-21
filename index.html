@@ -11,7 +11,7 @@
 </head>
 <body>
   <main class="wordle-container">
-      <nav class="navigation">
+    <nav class="navigation">
         <div class="navigation__left">
           <span class="hamburger">
             <svg width="24" height="17" viewBox="0 0 24 17" fill="" xmlns="http://www.w3.org/2000/svg">
@@ -43,12 +43,13 @@
             </svg>
           </span>
         </div>
-      </nav>
+    </nav>
     <div class="message-container"></div>
     <div class="tile-container"></div>
     <div class="key-container"></div>
   </main>
-  <section id="instructions-overlay" class="instructions-overlay">
+  <!-- REMOVE hidden class !!! -->
+  <section id="instructions-overlay" class="instructions-overlay hidden">
     <div class="instructions-overlay__content">
       <header class="instructions-overlay__header">
         <h1 class="instructions-overlay__title">How to play</h1>
@@ -98,6 +99,38 @@
           </div>
           <p><strong>A new <span class="allcaps">Wordle</span> will be available each day!</strong></p>
         </div>
+      </div>
+    </div>
+  </section>
+  <section id="statistics-overlay" class="statistics-overlay">
+    <div class="statistics-overlay__content">
+      <span id="statistics-hide" class="statistics-overlay__close-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+          <path fill="" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+        </svg>
+      </span>
+      <h2 class="statistics-title">Statistics</h2>
+      <div class="statistics-content">
+        <div class="statistics-content__item">
+          <div class="statistics-content__data">0</div>
+          <div class="statistics-content__label">played</div>
+        </div>
+        <div class="statistics-content__item">
+          <div class="statistics-content__data">0</div>
+          <div class="statistics-content__label expand">win %</div>
+        </div>
+        <div class="statistics-content__item">
+          <div class="statistics-content__data">0</div>
+          <div class="statistics-content__label">current streak</div>
+        </div>
+        <div class="statistics-content__item">
+          <div class="statistics-content__data">0</div>
+          <div class="statistics-content__label">max streak</div>
+        </div>
+      </div>
+      <h2 class="statistics-title">Guess distribution</h2>
+      <div class="statistics-content__guess-distribution">
+        <p>No data</p>
       </div>
     </div>
   </section>

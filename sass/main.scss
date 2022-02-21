@@ -1,6 +1,7 @@
 $color-primary-light: white;
 $color-secondary-light: #818384;
 $color-primary-dark: #121213;
+$color-primary-dark-opacity: rgba(0, 0, 0, 0.5);
 $color-secondary-dark: #3a3a3c;
 $color-letter-misplaced: #b59f3b;
 $color-letter-match: #538d4e;
@@ -40,6 +41,16 @@ $color-letter-match: #538d4e;
 @mixin letter-match {
   border-color: $color-letter-match !important;
   background-color: $color-letter-match !important;
+}
+
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: $color-primary-dark;
 }
 
 * {
@@ -173,13 +184,7 @@ body {
 }
 
 .instructions-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  background-color: $color-primary-dark;
+  @include overlay;
 
   &.hidden {
     display: none;
@@ -257,3 +262,95 @@ body {
     }
   }
 }
+
+.statistics {
+
+  &-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 0.5rem;
+    }
+
+    &__data {
+      font-size: 2.25rem;
+    }
+
+    &__label {
+      max-width: min-content;
+      text-align: center;
+      text-transform: capitalize;
+      font-size: 0.75rem;
+
+      // "Win %" should stay on one line
+      &.expand {
+        max-width: fit-content;
+      }
+    }
+
+    &__guess-distribution {
+
+      & p {
+        margin: 0;
+        text-align: center;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &-overlay {
+    @include overlay;
+    background-color: $color-primary-dark-opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.hidden {
+      display: none;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      width: 33%;
+      max-height: 90%;
+      padding: 2rem;
+      background-color: $color-primary-dark;
+      border: 1px solid $color-primary-dark;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.2);
+      overflow-y: auto;
+    }
+
+    &__close-icon {
+      position: relative;
+      top: -1rem;
+      right: -1rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      & svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        fill: $color-primary-light;
+      }
+    }
+  }
+}
+
