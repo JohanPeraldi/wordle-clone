@@ -250,8 +250,10 @@ const app = {
     });
 
     // CLOSE SETTINGS OVERLAY
-    // Add click event on settings overlay
-    settingsOverlayElement.addEventListener("click", () => {
+    // Select close settings button
+    const hideSettingsButton = document.getElementById("settings-hide");
+    // Add click event on close settings button
+    hideSettingsButton.addEventListener("click", () => {
       // Add "hidden" class to settings overlay
       settingsOverlayElement.classList.add("hidden");
     });
