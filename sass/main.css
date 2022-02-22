@@ -130,6 +130,76 @@ body {
   background-color: #538d4e !important;
 }
 
+.navigation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: #121213;
+  background-color: transparent;
+}
+.navigation-overlay__content {
+  position: relative;
+  top: 5rem;
+  width: 23rem;
+  height: calc(100% - 5rem);
+  background-color: #121213;
+  overflow-y: auto;
+}
+.navigation-overlay__header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+.navigation-overlay__close-icon {
+  position: absolute;
+  top: 24px;
+  right: 1.5rem;
+  fill: white;
+}
+.navigation-overlay__close-icon:hover {
+  cursor: pointer;
+}
+.navigation-overlay__navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.navigation-overlay__navigation--bottom {
+  border-top: 1px solid white;
+  margin: 0 1.5rem;
+}
+.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item > p {
+  padding: 0;
+}
+.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item:hover {
+  background-color: initial;
+  cursor: initial;
+}
+.navigation-overlay__navigation-container {
+  height: calc(100% - 5rem);
+}
+.navigation-overlay__navigation-item {
+  padding: 0.1rem 0;
+}
+.navigation-overlay__navigation-item > p {
+  padding: 0 1.5rem;
+}
+.navigation-overlay__navigation-item:hover {
+  background-color: #3a3a3c;
+  cursor: pointer;
+}
+.privacy {
+  text-decoration: none;
+}
+.privacy:hover {
+  text-decoration: underline;
+}
+
 .instructions-overlay {
   position: absolute;
   top: 0;

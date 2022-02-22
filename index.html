@@ -48,7 +48,40 @@
     <div class="tile-container"></div>
     <div class="key-container"></div>
   </main>
-  <section id="instructions-overlay" class="instructions-overlay">
+  <section id="navigation-overlay" class="navigation-overlay hidden">
+    <div class="navigation-overlay__content">
+      <header class="navigation-overlay__header">
+        <h1 class="navigation-title">Wordle menu</h1>
+        <span id="navigation-hide" class="navigation-overlay__close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path fill="" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          </svg>
+        </span>
+      </header>
+      <div class="navigation-overlay__navigation-container">
+        <div class="navigation-overlay__navigation">
+          <div class="navigation-overlay__navigation--top">
+            <div class="navigation-overlay__navigation-item">
+              <p>How to play</p>
+            </div>
+            <div class="navigation-overlay__navigation-item">
+              <p>Statistics</p>
+            </div>
+            <div class="navigation-overlay__navigation-item">
+              <p>Settings</p>
+            </div>
+          </div>
+          <div class="navigation-overlay__navigation--bottom">
+            <div class="navigation-overlay__navigation-item">
+              <p><a href="#" class="privacy">Privacy policy</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Remove "hidden" class!!! -->
+  <section id="instructions-overlay" class="instructions-overlay hidden">
     <div class="instructions-overlay__content">
       <header class="instructions-overlay__header">
         <h1 class="instructions-overlay__title">How to play</h1>
