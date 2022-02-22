@@ -331,6 +331,9 @@ body {
 .settings-overlay__settings-item-link {
   color: #818384;
 }
+.settings-overlay.hidden {
+  display: none;
+}
 .settings-title {
   font-weight: bold;
   font-size: 1rem;

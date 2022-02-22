@@ -238,6 +238,23 @@ const app = {
       // Add "hidden" class to statistics overlay
       statisticsOverlayElement.classList.add("hidden");
     });
+
+    // OPEN SETTINGS OVERLAY
+    // Select settings button
+    const settingsButton = document.getElementById("settings-show");
+    // Select settings overlay section
+    const settingsOverlayElement = document.getElementById("settings-overlay");
+    // Add click event listener on settings button
+    settingsButton.addEventListener("click", () => {
+      settingsOverlayElement.classList.remove("hidden");
+    });
+
+    // CLOSE SETTINGS OVERLAY
+    // Add click event on settings overlay
+    settingsOverlayElement.addEventListener("click", () => {
+      // Add "hidden" class to settings overlay
+      settingsOverlayElement.classList.add("hidden");
+    });
   },
   rows: [
     ["", "", "", "", ""],
