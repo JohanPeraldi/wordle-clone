@@ -195,7 +195,6 @@ body {
     height: calc(100% - 5rem);
     background-color: $color-primary-dark;
     overflow-y: auto;
-    //padding: 0 1.5rem;
   }
 
   &__header {
@@ -258,7 +257,7 @@ body {
   }
 
   &.hidden {
-    //display: none;
+    display: none;
   }
 }
 

@@ -201,6 +201,25 @@ const app = {
   },
   // Activate event listeners
   listenToEvents: function () {
+    // OPEN LEFT NAVIGATION OVERLAY
+    // Select hamburger button
+    const hamburgerButton = document.getElementById("hamburger");
+    // Select navigation overlay section
+    const navigationOverlayElement =
+      document.getElementById("navigation-overlay");
+    // Add click event listener on hamburger button
+    hamburgerButton.addEventListener("click", () => {
+      navigationOverlayElement.classList.remove("hidden");
+    });
+
+    // CLOSE LEFT NAVIGATION OVERLAY
+    // Select close button
+    const closeNavigationButton = document.getElementById("navigation-hide");
+    // Add click event on close button
+    closeNavigationButton.addEventListener("click", () => {
+      navigationOverlayElement.classList.add("hidden");
+    });
+
     // OPEN INSTRUCTIONS OVERLAY
     // Select open button (to open instructions overlay)
     const openButton = document.getElementById("instructions-show");

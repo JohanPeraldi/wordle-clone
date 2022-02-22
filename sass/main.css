@@ -193,6 +193,10 @@ body {
   background-color: #3a3a3c;
   cursor: pointer;
 }
+.navigation-overlay.hidden {
+  display: none;
+}
+
 .privacy {
   text-decoration: none;
 }
