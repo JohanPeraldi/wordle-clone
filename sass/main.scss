@@ -354,3 +354,104 @@ body {
   }
 }
 
+.settings {
+
+  &-overlay {
+    @include overlay;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      max-width: 33vw;
+      margin: 0 auto;
+    }
+
+    &__header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__close-icon {
+      position: absolute;
+      top: 12px;
+      right: 0;
+      fill: $color-primary-light;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__settings-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.8rem 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid $color-secondary-light;
+
+      &-title {
+        font-size: 1.125rem;
+        font-weight: normal;
+        text-transform: capitalize;
+        margin: 0;
+      }
+
+      &-description {
+        font-size: 0.75rem;
+        color: $color-secondary-light;
+        margin: 0;
+      }
+
+      &-link {
+        color: $color-secondary-light;
+      }
+    }
+
+    &.hidden {
+      //display: none;
+    }
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+.control {
+
+  &__switch {
+    position: relative;
+    height: 1.25rem;
+    width: 2rem;
+    background-color: $color-secondary-light;
+    border-radius: 2rem;
+
+    &.active {
+      background-color: $color-letter-match;
+    }
+  }
+
+  &__knob {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0.5rem;
+    background-color: $color-primary-light;
+
+    &.active {
+      left: unset;
+      right: 2px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

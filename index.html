@@ -48,7 +48,8 @@
     <div class="tile-container"></div>
     <div class="key-container"></div>
   </main>
-  <section id="instructions-overlay" class="instructions-overlay">
+  <!-- REMOVE "hidden" class!!! -->
+  <section id="instructions-overlay" class="instructions-overlay hidden">
     <div class="instructions-overlay__content">
       <header class="instructions-overlay__header">
         <h1 class="instructions-overlay__title">How to play</h1>
@@ -130,6 +131,70 @@
       <h2 class="statistics-title">Guess distribution</h2>
       <div class="statistics-content__guess-distribution">
         <p>No data</p>
+      </div>
+    </div>
+  </section>
+  <section id="settings-overlay" class="settings-overlay hidden">
+    <div class="settings-overlay__content">
+      <header class="settings-overlay__header">
+        <h1 class="settings-title">Settings</h1>
+        <span id="settings-hide" class="settings-overlay__close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path fill="" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+          </svg>
+        </span>
+      </header>
+      <div class="settings-overlay__settings-container">
+        <div class="settings-overlay__settings">
+          <div class="settings-overlay__settings-item">
+            <div class="settings-overlay__settings-item-text">
+              <h2 class="settings-overlay__settings-item-title">Hard mode</h2>
+              <p class="settings-overlay__settings-item-description">Any revealed hints must be used in subsequent guesses</p>
+            </div>
+            <div class="control">
+              <div class="control__container">
+                <div class="control__switch active">
+                  <span class="control__knob active"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-overlay__settings-item">
+            <h2 class="settings-overlay__settings-item-title">Dark theme</h2>
+            <div class="control">
+              <div class="control__container">
+                <div class="control__switch active">
+                  <span class="control__knob active"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-overlay__settings-item">
+            <div class="settings-overlay__settings-item-text">
+              <h2 class="settings-overlay__settings-item-title">High contrast mode</h2>
+              <p class="settings-overlay__settings-item-description">For improved color vision</p>
+            </div>
+            <div class="control">
+              <div class="control__container">
+                <div class="control__switch">
+                  <span class="control__knob"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-overlay__settings-item">
+            <h2 class="settings-overlay__settings-item-title">Feedback</h2>
+            <a href="#" class="settings-overlay__settings-item-link">Email</a>
+          </div>
+          <div class="settings-overlay__settings-item">
+            <h2 class="settings-overlay__settings-item-title">Community</h2>
+            <a href="#" class="settings-overlay__settings-item-link">Twitter</a>
+          </div>
+          <div class="settings-overlay__settings-item">
+            <h2 class="settings-overlay__settings-item-title">Questions?</h2>
+            <a href="#" class="settings-overlay__settings-item-link">FAQ</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
