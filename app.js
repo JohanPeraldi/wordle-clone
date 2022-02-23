@@ -75,6 +75,7 @@ const app = {
           app.flipTile();
           console.log(`User input is: ${userInput}\nWordle is: ${app.wordle}`);
           if (userInput === app.wordle) {
+            app.gameOver = true;
             // Add a switch to check on which row we are and display corresponding message
             // if on row 0, message = "Genius"
             // if on row 1, message = "Magnificent"
@@ -104,7 +105,6 @@ const app = {
                 message = "Phew";
             }
             app.showMessage(message);
-            app.gameOver = true;
           } else {
             if (app.currentRow >= 5) {
               app.gameOver = true;
@@ -122,18 +122,29 @@ const app = {
   },
   showMessage: function (message) {
     const createMessageElement = () => {
+      app.messageIsShown = true;
       const messageDisplay = document.querySelector(".message-container");
       messageDisplay.append(messageElement);
-      setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
+      setTimeout(() => messageDisplay.removeChild(messageElement), 1000);
+      setTimeout(() => (app.messageIsShown = false), 1000);
     };
     const messageElement = document.createElement("p");
     messageElement.textContent = message;
-    if (message === "Not in word list") {
-      createMessageElement();
-    } else {
-      setTimeout(() => {
-        createMessageElement();
-      }, 2500);
+    // Only create a message element if no message element currently exists
+    if (!app.messageIsShown) {
+      if (message === "Not in word list" || message === "Invalid key") {
+        // Check if game is over to avoid displaying unnecessary messages
+        // once wordle has been found or on last row check
+        if (!app.gameOver) {
+          createMessageElement();
+        }
+      } else {
+        // Only for victory messages and to display wordle if not found after last attempt
+        // (timer lets all tiles animations finish before displaying message)
+        setTimeout(() => {
+          createMessageElement();
+        }, 2500);
+      }
     }
   },
   // Color keyboard keys after user input check
@@ -350,6 +361,9 @@ const app = {
   currentRow: 0,
   currentTile: 0,
   gameOver: false,
+  // A property to memorize if a message is currently shown or not
+  // in order to avoid showing more than one message at a time
+  messageIsShown: false,
 };
 
 document.addEventListener("DOMContentLoaded", app.init);
