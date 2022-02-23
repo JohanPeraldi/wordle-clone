@@ -9,6 +9,8 @@ const app = {
     app.createKeyboard();
     // Activate event listeners
     app.listenToEvents();
+    // Activate keyboard event listeners
+    app.listenToKeyboardEvents();
   },
   getWordle: function () {
     // fetch(`http://localhost:${process.env.PORT}/word`) // This does not work
@@ -275,6 +277,35 @@ const app = {
     hideSettingsButton.addEventListener("click", () => {
       // Add "hidden" class to settings overlay
       settingsOverlayElement.classList.add("hidden");
+    });
+  },
+  // LISTEN TO KEYBOARD EVENTS
+  // (in order to use the keyboard to type in letters)
+  listenToKeyboardEvents: function () {
+    document.addEventListener("keyup", (event) => {
+      const letter = event.key.toUpperCase();
+      if (!app.gameOver) {
+        console.log(letter);
+        if (letter === "ENTER") {
+          if (app.currentTile > 4) {
+            app.checkUserInput();
+          }
+        } else if (letter === "BACKSPACE") {
+          if (app.currentTile > 0) {
+            app.deleteLetter();
+          }
+        } else {
+          if (app.currentTile < 5 && app.currentRow < 6) {
+            // Letters that are not in the app.keys array should be ignored
+            if (app.keys.includes(letter)) {
+              app.addLetter(letter);
+            } else {
+              app.showMessage("Invalid key");
+            }
+          }
+        }
+        console.log(app.rows);
+      }
     });
   },
   rows: [
