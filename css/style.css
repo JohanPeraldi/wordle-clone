@@ -275,6 +275,9 @@ body {
   border-color: #538d4e !important;
   background-color: #538d4e !important;
 }
+.instructions-overlay__example--tile.flip {
+  animation: 500ms linear flipping;
+}
 
 .statistics-title {
   text-align: center;
