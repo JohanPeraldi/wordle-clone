@@ -1,0 +1,87 @@
+/**
+ * The instructions modal
+ */
+
+.instructions-overlay {
+  @include overlay;
+
+  &.hidden {
+    display: none;
+  }
+
+  &__content {
+    max-width: 33vw;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__open-icon {
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      fill: $color-primary-light;
+    }
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 1rem;
+    right: 32vw;
+    fill: $color-primary-light;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__instructions {
+    strong {
+      font-weight: bold;
+    }
+
+    .allcaps {
+      text-transform: uppercase;
+    }
+  }
+
+  &__examples {
+    border-top: 1px solid $color-secondary-dark;
+    border-bottom: 1px solid $color-secondary-dark;
+  }
+
+  &__example {
+
+    &--row {
+      display: flex;
+    }
+
+    &--tile {
+      width: 3rem;
+      height: 3rem;
+      @include tile-styles;
+
+      &.letter-absent {
+        @include letter-absent;
+      }
+
+      &.letter-misplaced {
+        @include letter-misplaced;
+      }
+
+      &.letter-match {
+        @include letter-match;
+      }
+
+      &.flip {
+        animation: 500ms linear flipping;
+      }
+    }
+  }
+}

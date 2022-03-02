@@ -1,0 +1,33 @@
+.tile-container {
+  width: 20.625rem;
+  margin-bottom: 1.875rem;
+
+  div {
+    display: flex;
+  }
+
+  .tile {
+    width: 3.875rem;
+    height: 3.875rem;
+    @include tile-styles;
+
+    &.flip {
+      animation: 500ms linear flipping;
+    }
+  }
+}
+
+.overlay {
+
+  &-letter-absent {
+    @include letter-absent;
+  }
+
+  &-letter-misplaced {
+    @include letter-misplaced;
+  }
+
+  &-letter-match {
+    @include letter-match;
+  }
+}

@@ -1,0 +1,12 @@
+.message-container {
+  height: 1.875rem;
+
+  p {
+    background-color: $color-primary-light;
+    color: $color-primary-dark;
+    font-weight: bold;
+    border-radius: 2px;
+    padding: 1rem;
+    margin: 0;
+  }
+}

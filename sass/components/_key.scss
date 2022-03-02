@@ -1,0 +1,27 @@
+.key-container {
+  width: 31.875rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  button {
+    width: 2.6875rem;
+    height: 3.625rem;
+    border-radius: 4px;
+    border: none;
+    background-color: $color-secondary-light;
+    margin: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:nth-child(11) {
+      margin-left: 1.875rem;
+    }
+
+    &:nth-child(20),
+    &:nth-child(28) {
+      width: 4.25rem;
+    }
+  }
+}

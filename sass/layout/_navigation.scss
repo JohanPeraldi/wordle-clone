@@ -1,0 +1,42 @@
+/**
+ * This is the main navigation bar
+ * at the top of the main page
+ */
+
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-secondary-dark;
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+  }
+}
+
+.hamburger,
+.statistics {
+  margin-right: 0.5rem;
+}
+
+.hamburger,
+.statistics,
+.settings {
+
+  & svg {
+    fill: $color-primary-light;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.title-container {
+  text-align: center;
+  width: 100%;
+}

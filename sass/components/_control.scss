@@ -1,0 +1,38 @@
+/**
+ * The control component to select the desired settings
+ */
+
+.control {
+
+  &__switch {
+    position: relative;
+    height: 1.25rem;
+    width: 2rem;
+    background-color: $color-secondary-light;
+    border-radius: 2rem;
+
+    &.active {
+      background-color: $color-letter-match;
+    }
+  }
+
+  &__knob {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0.5rem;
+    background-color: $color-primary-light;
+
+    &.active {
+      left: unset;
+      right: 2px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

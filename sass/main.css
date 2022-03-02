@@ -1,3 +1,6 @@
+/**
+ * COLOURS
+ */
 @keyframes flipping {
   0% {
     transform: rotateX(0deg);
@@ -26,184 +29,9 @@ body {
   align-items: center;
 }
 
-.navigation {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #3a3a3c;
-}
-.navigation__left, .navigation__right {
-  display: flex;
-  align-items: center;
-  margin: 0 1rem;
-}
-
-.hamburger,
-.statistics {
-  margin-right: 0.5rem;
-}
-
-.hamburger svg,
-.statistics svg,
-.settings svg {
-  fill: white;
-}
-.hamburger:hover,
-.statistics:hover,
-.settings:hover {
-  cursor: pointer;
-}
-
-.title-container {
-  text-align: center;
-  width: 100%;
-}
-
-.message-container {
-  height: 1.875rem;
-}
-.message-container p {
-  background-color: white;
-  color: #121213;
-  font-weight: bold;
-  border-radius: 2px;
-  padding: 1rem;
-  margin: 0;
-}
-
-.tile-container {
-  width: 20.625rem;
-  margin-bottom: 1.875rem;
-}
-.tile-container div {
-  display: flex;
-}
-.tile-container .tile {
-  width: 3.875rem;
-  height: 3.875rem;
-  border: 2px solid #3a3a3c;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2px;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-.tile-container .tile.flip {
-  animation: 500ms linear flipping;
-}
-
-.key-container {
-  width: 31.875rem;
-  display: flex;
-  flex-wrap: wrap;
-}
-.key-container button {
-  width: 2.6875rem;
-  height: 3.625rem;
-  border-radius: 4px;
-  border: none;
-  background-color: #818384;
-  margin: 4px;
-}
-.key-container button:hover {
-  cursor: pointer;
-}
-.key-container button:nth-child(11) {
-  margin-left: 1.875rem;
-}
-.key-container button:nth-child(20), .key-container button:nth-child(28) {
-  width: 4.25rem;
-}
-
-.overlay-letter-absent {
-  background-color: #3a3a3c !important;
-}
-.overlay-letter-misplaced {
-  border-color: #b59f3b !important;
-  background-color: #b59f3b !important;
-}
-.overlay-letter-match {
-  border-color: #538d4e !important;
-  background-color: #538d4e !important;
-}
-
-.navigation-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  background-color: #121213;
-  background-color: transparent;
-}
-.navigation-overlay__content {
-  position: relative;
-  top: 5rem;
-  width: 23rem;
-  height: calc(100% - 5rem);
-  background-color: #121213;
-  overflow-y: auto;
-}
-.navigation-overlay__header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-}
-.navigation-overlay__close-icon {
-  position: absolute;
-  top: 24px;
-  right: 1.5rem;
-  fill: white;
-}
-.navigation-overlay__close-icon:hover {
-  cursor: pointer;
-}
-.navigation-overlay__navigation {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.navigation-overlay__navigation--bottom {
-  border-top: 1px solid white;
-  margin: 0 1.5rem;
-}
-.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item > p {
-  padding: 0;
-}
-.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item:hover {
-  background-color: initial;
-  cursor: initial;
-}
-.navigation-overlay__navigation-container {
-  height: calc(100% - 5rem);
-}
-.navigation-overlay__navigation-item {
-  padding: 0.1rem 0;
-}
-.navigation-overlay__navigation-item > p {
-  padding: 0 1.5rem;
-}
-.navigation-overlay__navigation-item:hover {
-  background-color: #3a3a3c;
-  cursor: pointer;
-}
-.navigation-overlay.hidden {
-  display: none;
-}
-
-.privacy {
-  text-decoration: none;
-}
-.privacy:hover {
-  text-decoration: underline;
-}
-
+/**
+ * The instructions modal
+ */
 .instructions-overlay {
   position: absolute;
   top: 0;
@@ -279,6 +107,191 @@ body {
   animation: 500ms linear flipping;
 }
 
+/**
+ * This is the main navigation bar
+ * at the top of the main page
+ */
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3a3a3c;
+}
+.navigation__left, .navigation__right {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.hamburger,
+.statistics {
+  margin-right: 0.5rem;
+}
+
+.hamburger svg,
+.statistics svg,
+.settings svg {
+  fill: white;
+}
+.hamburger:hover,
+.statistics:hover,
+.settings:hover {
+  cursor: pointer;
+}
+
+.title-container {
+  text-align: center;
+  width: 100%;
+}
+
+/**
+ * This is the left navigation menu modal
+ * opened by clicking the hamburger icon
+ */
+.navigation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: #121213;
+  background-color: transparent;
+}
+.navigation-overlay__content {
+  position: relative;
+  top: 5rem;
+  width: 23rem;
+  height: calc(100% - 5rem);
+  background-color: #121213;
+  overflow-y: auto;
+}
+.navigation-overlay__header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+.navigation-overlay__close-icon {
+  position: absolute;
+  top: 24px;
+  right: 1.5rem;
+  fill: white;
+}
+.navigation-overlay__close-icon:hover {
+  cursor: pointer;
+}
+.navigation-overlay__navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.navigation-overlay__navigation--bottom {
+  border-top: 1px solid white;
+  margin: 0 1.5rem;
+}
+.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item > p {
+  padding: 0;
+}
+.navigation-overlay__navigation--bottom > .navigation-overlay__navigation-item:hover {
+  background-color: initial;
+  cursor: initial;
+}
+.navigation-overlay__navigation-container {
+  height: calc(100% - 5rem);
+}
+.navigation-overlay__navigation-item {
+  padding: 0.1rem 0;
+}
+.navigation-overlay__navigation-item > p {
+  padding: 0 1.5rem;
+}
+.navigation-overlay__navigation-item:hover {
+  background-color: #3a3a3c;
+  cursor: pointer;
+}
+.navigation-overlay.hidden {
+  display: none;
+}
+
+/**
+ * The privacy policy link at the bottom of the left navigation menu
+ */
+.privacy {
+  text-decoration: none;
+}
+.privacy:hover {
+  text-decoration: underline;
+}
+
+/**
+ * The settings modal
+ */
+.settings-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: #121213;
+}
+.settings-overlay__content {
+  display: flex;
+  flex-direction: column;
+  max-width: 33vw;
+  margin: 0 auto;
+}
+.settings-overlay__header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.settings-overlay__close-icon {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  fill: white;
+}
+.settings-overlay__close-icon:hover {
+  cursor: pointer;
+}
+.settings-overlay__settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.8rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #818384;
+}
+.settings-overlay__settings-item-title {
+  font-size: 1.125rem;
+  font-weight: normal;
+  text-transform: capitalize;
+  margin: 0;
+}
+.settings-overlay__settings-item-description {
+  font-size: 0.75rem;
+  color: #818384;
+  margin: 0;
+}
+.settings-overlay__settings-item-link {
+  color: #818384;
+}
+.settings-overlay.hidden {
+  display: none;
+}
+.settings-title {
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/**
+ * The statistics modal
+ */
 .statistics-title {
   text-align: center;
   text-transform: uppercase;
@@ -357,66 +370,9 @@ body {
   fill: white;
 }
 
-.settings-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  background-color: #121213;
-}
-.settings-overlay__content {
-  display: flex;
-  flex-direction: column;
-  max-width: 33vw;
-  margin: 0 auto;
-}
-.settings-overlay__header {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-.settings-overlay__close-icon {
-  position: absolute;
-  top: 12px;
-  right: 0;
-  fill: white;
-}
-.settings-overlay__close-icon:hover {
-  cursor: pointer;
-}
-.settings-overlay__settings-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.8rem 0;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #818384;
-}
-.settings-overlay__settings-item-title {
-  font-size: 1.125rem;
-  font-weight: normal;
-  text-transform: capitalize;
-  margin: 0;
-}
-.settings-overlay__settings-item-description {
-  font-size: 0.75rem;
-  color: #818384;
-  margin: 0;
-}
-.settings-overlay__settings-item-link {
-  color: #818384;
-}
-.settings-overlay.hidden {
-  display: none;
-}
-.settings-title {
-  font-weight: bold;
-  font-size: 1rem;
-  text-transform: uppercase;
-}
-
+/**
+ * The control component to select the desired settings
+ */
 .control__switch {
   position: relative;
   height: 1.25rem;
@@ -443,6 +399,76 @@ body {
 }
 .control:hover {
   cursor: pointer;
+}
+
+.key-container {
+  width: 31.875rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.key-container button {
+  width: 2.6875rem;
+  height: 3.625rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #818384;
+  margin: 4px;
+}
+.key-container button:hover {
+  cursor: pointer;
+}
+.key-container button:nth-child(11) {
+  margin-left: 1.875rem;
+}
+.key-container button:nth-child(20), .key-container button:nth-child(28) {
+  width: 4.25rem;
+}
+
+.message-container {
+  height: 1.875rem;
+}
+.message-container p {
+  background-color: white;
+  color: #121213;
+  font-weight: bold;
+  border-radius: 2px;
+  padding: 1rem;
+  margin: 0;
+}
+
+.tile-container {
+  width: 20.625rem;
+  margin-bottom: 1.875rem;
+}
+.tile-container div {
+  display: flex;
+}
+.tile-container .tile {
+  width: 3.875rem;
+  height: 3.875rem;
+  border: 2px solid #3a3a3c;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.tile-container .tile.flip {
+  animation: 500ms linear flipping;
+}
+
+.overlay-letter-absent {
+  background-color: #3a3a3c !important;
+}
+.overlay-letter-misplaced {
+  border-color: #b59f3b !important;
+  background-color: #b59f3b !important;
+}
+.overlay-letter-match {
+  border-color: #538d4e !important;
+  background-color: #538d4e !important;
 }
 
 /*# sourceMappingURL=main.css.map */
